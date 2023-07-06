@@ -25,11 +25,11 @@ app.use(express.json());
 // template engine
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'resources/view'));
+app.set('views', path.join(__dirname, 'resources', 'view'));
 
-// Routes iniy
+// Routes init
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });
