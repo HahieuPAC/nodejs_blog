@@ -29,6 +29,11 @@ class CourseController {
             .then(() => res.redirect('/'))
             .catch((error) => {});
     }
+
+    // [GET] /course/edit
+    edit(req, res, next) {
+        res.render('courses/edit');
+    }
 }
 
 module.exports = new CourseController();

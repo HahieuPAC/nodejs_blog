@@ -1,0 +1,31 @@
+<div class='mt-4'>
+    <h3>Khoa hoc cua toi</h3>
+
+    <table class='table'>
+        <thead>
+            <tr>
+                <th scope='col'>ten khoa hoc</th>
+                <th scope='col'>trinh do</th>
+                <th></th>
+                <th scope='col'>link anh</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+                <tr>
+                    <th scope='row'>{{@index}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.level}}</td>
+                    <td>{{this.image}}</td>
+                    <td>
+                        <a
+                            href='/courses/{{this._id}}/edit'
+                            class='btn btn-link'
+                        >sua</a>
+                        <a href='' class='btn btn-link'>xoa</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

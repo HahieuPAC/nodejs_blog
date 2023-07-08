@@ -22,6 +22,8 @@ app.use(express.json());
 //HTTP logger
 // app.use(morgan('combined'))
 
+// Templaate engine
+
 // template engine
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
