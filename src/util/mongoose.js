@@ -5,6 +5,6 @@ module.exports = {
         );
     },
     mongooseToObject: function (mongooseArrays) {
-        return mongooseArrays ? mongoose.toObject() : mongooseArrays;
+        return mongooseArrays ? mongooseArrays.toObject() : mongooseArrays;
     },
 };

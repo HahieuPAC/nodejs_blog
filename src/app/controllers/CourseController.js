@@ -1,5 +1,9 @@
 const Course = require('../models/Course');
-const { mongooseToObject } = require('../../util/mongoose');
+const {
+    mongooseToObject,
+    multipleMongooseToObject,
+} = require('../../util/mongoose');
+const { render } = require('node-sass');
 
 class CourseController {
     // [GET] /course/:slug
@@ -16,7 +20,7 @@ class CourseController {
 
     // [GET] /course/create
     create(req, res, next) {
-        res.render('../../resources/view/courses/create.handlebars');
+        res.render('courses/create');
     }
 
     // [POST] /course/store
@@ -30,9 +34,31 @@ class CourseController {
             .catch((error) => {});
     }
 
-    // [GET] /course/edit
+    // [GET] /course/:id/edit
     edit(req, res, next) {
-        res.render('courses/edit');
+        Course.findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: mongooseToObject(course),
+                }),
+            )
+            .catch(next);
+    }
+
+    // [PUT] /course/:id
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/me/stored/courses'))
+            .catch(next);
+    }
+
+    // [DELETE] /course/:id
+    destroy(req, res, next) {
+        Course.deleteOne({
+            _id: req.params.id
+        })
+            .then(() => res.redirect('back'))
+            .catch(next);
     }
 }
 

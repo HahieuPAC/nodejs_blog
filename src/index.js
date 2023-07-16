@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars').create({
     /* options */
 });
+const methodOverride = require('method-override');
 const app = express();
 const port = 3000;
 const route = require('./routes');
@@ -19,6 +20,8 @@ app.use(
     }),
 );
 app.use(express.json());
+// Method override
+app.use(methodOverride('_method'));
 //HTTP logger
 // app.use(morgan('combined'))
 
